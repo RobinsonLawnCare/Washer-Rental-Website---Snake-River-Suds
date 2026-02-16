@@ -1,0 +1,132 @@
+:root {
+    --navy: #1A365D;
+    --green: #5B8930;
+    --river-blue: #3182CE;
+    --sky: #EBF8FF;
+    --white: #ffffff;
+    --text: #2D3748;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Open Sans', sans-serif; color: var(--text); line-height: 1.6; overflow-x: hidden; }
+h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.text-center { text-align: center; }
+
+/* Navigation Base */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    height: 90px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* Links | Logo | Actions */
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-logo img { height: 75px; grid-column: 2; }
+
+.nav-wrapper {
+    display: contents; /* Desktop: allows links to left, actions to right */
+}
+
+.nav-links { grid-column: 1; display: flex; gap: 30px; }
+.nav-actions { grid-column: 3; display: flex; align-items: center; gap: 20px; justify-content: flex-end; }
+
+.nav-links a { text-decoration: none; color: var(--navy); font-weight: 700; transition: 0.3s; }
+.phone-num { font-weight: 800; color: var(--navy); }
+.cta-button { background: var(--green); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+
+.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; }
+.hamburger span { width: 30px; height: 3px; background: var(--navy); border-radius: 2px; transition: 0.3s; }
+
+/* --- THE 900PX RESPONSIVE NAV --- */
+@media (max-width: 900px) {
+    .hamburger { display: flex; grid-column: 1; }
+    
+    .nav-wrapper {
+        position: fixed;
+        left: -100%; /* Hidden */
+        top: 90px;
+        display: flex;
+        flex-direction: column;
+        background: var(--white);
+        width: 100%;
+        height: calc(100vh - 90px);
+        padding: 50px 20px;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        justify-content: flex-start;
+        gap: 40px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+
+    .nav-wrapper.active { left: 0; }
+    
+    .nav-links { flex-direction: column; align-items: center; font-size: 1.5rem; }
+    .nav-actions { flex-direction: column; width: 100%; }
+    .cta-button { width: 100%; text-align: center; font-size: 1.2rem; }
+
+    /* Hamburger Animation to 'X' */
+    .hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+}
+
+/* Hero Section Styles */
+.hero { 
+    background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2070'); 
+    background-size: cover; background-position: center; background-attachment: fixed;
+    min-height: 85vh; display: flex; align-items: center;
+}
+.hero-overlay { background: rgba(26, 54, 93, 0.45); width: 100%; height: 100%; padding: 80px 0; }
+.hero-card { 
+    background: rgba(255, 255, 255, 0.98); padding: 50px; border-radius: 24px; 
+    max-width: 580px; box-shadow: 0 30px 60px rgba(0,0,0,0.3); border-top: 8px solid var(--green);
+}
+.card-badge { background: var(--sky); color: var(--navy); display: inline-block; padding: 5px 15px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 20px; }
+.accent-text { color: var(--green); }
+.price-pill { background: var(--navy); color: white; padding: 12px 24px; border-radius: 10px; display: inline-block; margin: 25px 0; font-weight: bold; font-size: 1.2rem; }
+.btn-primary { background: var(--navy); color: white; padding: 18px 40px; text-decoration: none; border-radius: 10px; font-weight: bold; display: inline-block; }
+
+/* Pricing Section */
+.pricing-bg { background: var(--navy); padding: 100px 0; }
+.light-text { color: white; margin-bottom: 50px; font-size: 2.5rem; }
+.pricing-container { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
+.price-card-flat { background: white; padding: 50px; border-radius: 20px; width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.price-big { font-size: 4rem; font-weight: 800; color: var(--green); }
+.price-big span { font-size: 1.5rem; color: #777; }
+.price-card-flat ul { list-style: none; margin: 30px 0; text-align: left; }
+.price-card-flat li { padding: 12px 0; border-bottom: 1px solid #eee; }
+.btn-green { background: var(--green); color: white; padding: 15px; display: block; text-decoration: none; border-radius: 8px; font-weight: bold; }
+.btn-outline { border: 2px solid var(--navy); color: var(--navy); padding: 15px; display: block; text-decoration: none; border-radius: 8px; font-weight: bold; }
+
+/* Form Section */
+.form-bg { background: var(--sky); padding: 100px 0; }
+.form-card-main { background: white; border-radius: 25px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+.form-grid { display: grid; grid-template-columns: 1fr 1.2fr; }
+.form-text { background: var(--navy); color: white; padding: 60px; }
+.form-text h2 { color: white; font-size: 2.8rem; margin-bottom: 20px; }
+.pm-box { margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-left: 4px solid var(--green); border-radius: 8px; }
+.form-actual { padding: 60px; }
+input, select { width: 100%; padding: 18px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 10px; font-size: 1rem; }
+.btn-submit-final { background: var(--green); color: white; border: none; padding: 20px; width: 100%; border-radius: 10px; font-weight: 800; font-size: 1.3rem; cursor: pointer; box-shadow: 0 10px 20px rgba(91, 137, 48, 0.3); }
+
+footer { background: #111; color: white; text-align: center; padding: 40px 0; }
+
+@media (max-width: 900px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .hero-card { padding: 40px 30px; }
+    .hero-card h1 { font-size: 2.8rem; }
+}

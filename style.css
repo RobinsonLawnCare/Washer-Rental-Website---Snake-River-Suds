@@ -2,7 +2,7 @@
     --navy: #00234b;
     --orange: #f05023;
     --light: #f4f7f9;
-    --white: #ffffff;
+    --white: #ffffff:
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
@@ -27,6 +27,7 @@ nav a { text-decoration: none; color: var(--navy); font-weight: bold; }
     padding: 100px 0;
     text-align: center;
 }
+
 .hero h1 { font-size: 3rem; margin-bottom: 20px; }
 .highlight { color: var(--orange); }
 
